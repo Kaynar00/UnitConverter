@@ -9,6 +9,6 @@ import UnitModule as um
 
 Iunit = input('What are the units you want to put in? (Put in your units in square brackets like [m]/[s] or [J]*[s]) ') #Is later going to be an input variable
 
-conv = um.SItoCGS(Iunit)
+conv, Unit = um.SItoCGS(Iunit)
         
-print(conv)
+print('The value you need to multiply your initial value with to get the units '+Unit+' is: '+str(conv))
