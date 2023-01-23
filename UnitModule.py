@@ -19,9 +19,9 @@ def SItoCGS(Unit):
         elif i == 'm':
             if Add == True:
                 if Div == False:
-                    conv *= 1e3
+                    conv *= 1e2
                 elif Div == True:
-                    conv /= 1e3
+                    conv /= 1e2
             else:
                 continue
         elif i == 's':
