@@ -140,7 +140,7 @@ def SItoCGS(Unit):
                 NumList.append('s')
             elif DemMode == True:
                 DemList.append('s')
-        elif i == 'g':
+        elif i == 'g' and NewUnit[NewUnit.index(i)-1] != 'r':
             if DemMode == False:
                 if ParMode == False:
                     NumList.append('g')
