@@ -233,24 +233,24 @@ def SItoCGS(Unit):
                 DemList.append('Ba')
         elif i == 's':
             if DemMode == False:
-                NumList.append('s')
+                if ParMode == False:
+                    NumList.append('s')
+                elif ParMode == True and ParDemMode == False:
+                    NumList.appen('s')
+                elif ParMode == True and ParDemMode == True:
+                    DemList.append('s')
             elif DemMode == True:
-                DemList.append('s')
+                if ParMode == False:
+                    DemList.append('s')
+                elif ParMode == True and ParDemMode == False:
+                    DemList.append('s')
+                elif ParMode == True and ParDemMode == True:
+                    NumList.append('s')
         elif i == 'g' and NewUnit[NewUnit.index(i)-1] != 'r':
             if DemMode == False:
-                if ParMode == False:
-                    NumList.append('g')
-                elif ParMode == True and ParDemMode == False:
-                    NumList.appen('g')
-                elif ParMode == True and ParDemMode == True:
-                    DemList.append('g')
+                NumList.append('g')
             elif DemMode == True:
-                if ParMode == False:
-                    DemList.append('g')
-                elif ParMode == True and ParDemMode == False:
-                    DemList.append('g')
-                elif ParMode == True and ParDemMode == True:
-                    NumList.append('g')
+                DemList.append('g')
     
     NewUnit = ''
     NumListCopy = NumList.copy()
@@ -261,8 +261,9 @@ def SItoCGS(Unit):
         for j in range(len(DemList)):
             if NumList[i] == DemList[j]:
                 DemListCopy.pop(j-s)
+                NumListCopy.pop(i-s)
                 s += 1
-                continue
+                break
     
     NumList = NumListCopy
     DemList = DemListCopy
