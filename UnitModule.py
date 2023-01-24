@@ -19,7 +19,7 @@ def SItoCGS(Unit):
         
         if i == '[':
             Add = True
-        elif i == 'm':
+        elif i == 'm' and Unit[Unit.index(i)+1] != 'u':
             if Add == True:
                 if Div == False:
                     conv *= 1e2
@@ -76,12 +76,108 @@ def SItoCGS(Unit):
             Div = True
             NewUnit += '/'
         #Prefixes
+        elif i == 'P':
+            if Add == True:
+                if Div == False:
+                    conv *= 1e15
+                elif Div == True:
+                    conv /= 1e15
+            else:
+                continue
+        elif i == 'T':
+            if Add == True:
+                if Div == False:
+                    conv *= 1e12
+                elif Div == True:
+                    conv /= 1e12
+            else:
+                continue
+        elif i == 'G':
+            if Add == True:
+                if Div == False:
+                    conv *= 1e9
+                elif Div == True:
+                    conv /= 1e9
+            else:
+                continue
+        elif i == 'M':
+            if Add == True:
+                if Div == False:
+                    conv *= 1e6
+                elif Div == True:
+                    conv /= 1e6
+            else:
+                continue
         elif i == 'k':
             if Add == True:
                 if Div == False:
                     conv *= 1e3
                 elif Div == True:
                     conv /= 1e3
+            else:
+                continue
+        elif i == 'h':
+            if Add == True:
+                if Div == False:
+                    conv *= 1e2
+                elif Div == True:
+                    conv /= 1e2
+            else:
+                continue
+        elif i == 'd':
+            if Add == True:
+                if Div == False:
+                    conv *= 1e-1
+                elif Div == True:
+                    conv /= 1e-1
+            else:
+                continue
+        elif i == 'c':
+            if Add == True:
+                if Div == False:
+                    conv *= 1e-2
+                elif Div == True:
+                    conv /= 1e-2
+            else:
+                continue
+        elif i == 'm':
+            if Add == True:
+                if Div == False:
+                    conv *= 1e-3
+                elif Div == True:
+                    conv /= 1e-3
+            else:
+                continue
+        elif i == 'm' and Unit[Unit.index(i)+1] == 'u':
+            if Add == True:
+                if Div == False:
+                    conv *= 1e-6
+                elif Div == True:
+                    conv /= 1e-6
+            else:
+                continue
+        elif i == 'n':
+            if Add == True:
+                if Div == False:
+                    conv *= 1e-9
+                elif Div == True:
+                    conv /= 1e-9
+            else:
+                continue
+        elif i == 'p':
+            if Add == True:
+                if Div == False:
+                    conv *= 1e-12
+                elif Div == True:
+                    conv /= 1e-12
+            else:
+                continue
+        elif i == 'f':
+            if Add == True:
+                if Div == False:
+                    conv *= 1e-15
+                elif Div == True:
+                    conv /= 1e-15
             else:
                 continue
         else:
