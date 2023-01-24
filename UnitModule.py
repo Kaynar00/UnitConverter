@@ -253,20 +253,39 @@ def SItoCGS(Unit):
                 DemList.append('g')
     
     NewUnit = ''
-    NumListCopy = NumList.copy()
-    DemListCopy = DemList.copy()
-    s = 0
     
-    for i in range(len(NumList)):
-        for j in range(len(DemList)):
+    lendiff=len(DemList)-len(NumList)
+
+    if lendiff>0:
+        for i in range(lendiff):
+            NumList.append(0)
+    elif lendiff<0:
+        for i in range(abs(lendiff)):
+            DemList.append(0)
+
+    i=0
+    ireset=False
+    while i<len(NumList):
+        if ireset==True:
+            i=0
+        j=0
+        while j<len(DemList):
             if NumList[i] == DemList[j]:
-                DemListCopy.pop(j-s)
-                NumListCopy.pop(i-s)
-                s += 1
-                break
-    
-    NumList = NumListCopy
-    DemList = DemListCopy
+                DemList.pop(j)
+                NumList.pop(i)
+                ireset=True
+            j+=1
+        i+=1
+
+    zeroinlist=True
+    while zeroinlist==True:
+        #print(NumList)
+        if 0 in NumList:
+            NumList.remove(0)
+        elif 0 in DemList:
+            DemList.remove(0)
+        else:
+            zeroinlist=False
     
     for i in NumList:
         NewUnit += '['+i+']'
