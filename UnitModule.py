@@ -66,6 +66,24 @@ def SItoCGS(Unit):
                 NewUnit += '[Ba]'
             else:
                 continue
+        elif i == 'C':
+            if Add == True:
+                if Div == False:
+                    conv *= 2997924580
+                elif Div == True:
+                    conv /= 2997924580
+                NewUnit += '[statC]'
+            else:
+                continue
+        elif i == 'A':
+            if Add == True:
+                if Div == False:
+                    conv *= 3.33564e-10
+                elif Div == True:
+                    conv /= 3.33564e-10
+                NewUnit += '[statA]'
+            else:
+                continue
         elif i == 's':
             NewUnit += '[s]'
         elif i == 'g':
@@ -231,7 +249,17 @@ def SItoCGS(Unit):
                 NumList.append('Ba')
             elif DemMode == True:
                 DemList.append('Ba')
-        elif i == 's':
+        elif i == 's' and NewUnit[NewUnit.index(i)+1] == 't' and NewUnit[NewUnit.index(i)+2] == 'a' and NewUnit[NewUnit.index(i)+3] == 't' and NewUnit[NewUnit.index(i)+4] == 'C':
+            if DemMode == False:
+                NumList.append('statC')
+            elif DemMode == True:
+                DemList.append('statC')
+        elif i == 's' and NewUnit[NewUnit.index(i)+1] == 't' and NewUnit[NewUnit.index(i)+2] == 'a' and NewUnit[NewUnit.index(i)+3] == 't' and NewUnit[NewUnit.index(i)+4] == 'A':
+            if DemMode == False:
+                NumList.append('statA')
+            elif DemMode == True:
+                DemList.append('statA')
+        elif i == 's' and NewUnit[NewUnit.index(i)+1] == ']':
             if DemMode == False:
                 if ParMode == False:
                     NumList.append('s')
