@@ -84,6 +84,15 @@ def SItoCGS(Unit):
                 NewUnit += '[statA]'
             else:
                 continue
+        elif i == 'T' and Unit[Unit.index(i)+1] == 'e' and Unit[Unit.index(i)+2] == 's':
+            if Add == True:
+                if Div == False:
+                    conv *= 1e4
+                elif Div == True:
+                    conv /= 1e4
+                NewUnit += '[Gauss]'
+            else:
+                continue
         elif i == 's':
             NewUnit += '[s]'
         elif i == 'g':
@@ -259,6 +268,11 @@ def SItoCGS(Unit):
                 NumList.append('statA')
             elif DemMode == True:
                 DemList.append('statA')
+        elif i == 'G' and NewUnit[NewUnit.index(i)+1] == 'a' and NewUnit[NewUnit.index(i)+2] == 'u' and NewUnit[NewUnit.index(i)+3] == 's' and NewUnit[NewUnit.index(i)+4] == 's':
+            if DemMode == False:
+                NumList.append('Gauss')
+            elif DemMode == True:
+                DemList.append('Gauss')
         elif i == 's' and NewUnit[NewUnit.index(i)+1] == ']':
             if DemMode == False:
                 if ParMode == False:
